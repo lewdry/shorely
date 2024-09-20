@@ -131,7 +131,7 @@ function animateFish() {
     const container = document.getElementById('container');
     const containerHeight = container.clientHeight;
     const containerWidth = container.clientWidth;
-    const devicePixelRatio = window.devicePixelRatio; // Get the device pixel ratio
+    const devicePixelRatio = window.devicePixelRatio;
   
     function swimFish() {
       // Random y position in the top 30% of the container
@@ -139,23 +139,27 @@ function animateFish() {
       fish.style.top = `${randomY}px`;
   
       // Start fish at the right edge of the container
-      fish.style.left = `${containerWidth-50}px`;
+      fish.style.left = `${containerWidth}px`;
       fish.style.display = 'block';
   
       // Trigger reflow to restart the animation
       fish.getBoundingClientRect();
   
-      // Move fish to the left side of the screen
+      //  Sine wave amplitude and frequency for a more visible wave
+      const amplitude = Math.random() * (containerHeight * 0.2) + (containerHeight * 0.1); // Between 10% and 30% of container height
+      const frequency = Math.random() * 2 + 1; // Between 1 and 3
+  
+      // Move fish to the left side of the screen with sine wave y movement
       let startTime = null;
-      const swimDuration = 5000; // 5000ms for full swim (5 seconds)
+      const swimDuration = 8000; // 8000ms for full swim (5 seconds)
       function swim(timestamp) {
         if (!startTime) startTime = timestamp;
         const progress = timestamp - startTime;
         const normalizedProgress = progress / swimDuration;
-        const x = normalizedProgress * containerWidth * devicePixelRatio; // Multiply by devicePixelRatio
+        const x = normalizedProgress * containerWidth * devicePixelRatio; 
+        const y = amplitude * Math.sin(2 * Math.PI * frequency * normalizedProgress); 
   
-        //  Use a linear easing function:
-        fish.style.transform = `translateX(-${x}px)`; 
+        fish.style.transform = `translateX(-${x}px) translateY(${y}px)`;
   
         if (progress < swimDuration) {
           requestAnimationFrame(swim);
