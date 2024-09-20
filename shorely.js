@@ -4,7 +4,7 @@ let crabVelocity = { x: 0, y: 0 }; // Add velocity to the crab
 let targetPosition = { x: 0, y: 0 };
 let crabSpeed = 5; // Pixels per frame, adjust this to change the crab's speed
 const emojis = ['🐚', '🌟', '💖', '💍', '💎', '🧿', '👑', '🗝️', '💠']; // List of emojis with frequencies
-const fishEmojis = ['🐟', '🐠', '🐡', '🦐', '🐙', '🏄‍♀️', '🏄‍♂️']; // List of fish emojis
+const fishEmojis = ['🐟', '🐠', '🐡', '🦐', '🐙', '🏄‍♀️', '🏄‍♂️',]; // List of fish emojis
 let currentEmoji = null;
 let treasureCount = 0; // Counter for treasures
 let isBouncing = false; // Flag to indicate if the crab is bouncing
@@ -141,13 +141,13 @@ function animateFish() {
     const container = document.getElementById('container');
     const containerHeight = container.clientHeight;
     const containerWidth = container.clientWidth;
-
-        // Randomly select a fish emoji
-        const randomFish = fishEmojis[Math.floor(Math.random() * fishEmojis.length)];
-        fish.textContent = randomFish;
     
 
     function swimFish() {
+        // Randomly select a fish emoji
+        const randomFish = fishEmojis[Math.floor(Math.random() * fishEmojis.length)];
+        fish.textContent = randomFish;
+
         // Random y position in the top 30% of the container
         const randomY = Math.random() * (containerHeight * 0.3);
         fish.style.top = `${randomY}px`;
@@ -181,7 +181,7 @@ function animateFish() {
             } else {
                 fish.style.display = 'none';
                 fish.style.transform = 'none'; // Reset transform
-                setTimeout(swimFish, 2000); // Wait 2 seconds before starting the next swim
+                setTimeout(swimFish, 1000); // Wait 1 seconds before starting the next swim
             }
         }
         requestAnimationFrame(swim);
