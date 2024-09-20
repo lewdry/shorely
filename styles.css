@@ -5,7 +5,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
     background-color: #f4f4f4; /* Light background color for the body */
 }
 
@@ -26,7 +28,10 @@ main {
 #container {
     position: relative;
     background: url('images/sandy-texture.jpg') repeat;
+    width: 100%;
+    height: 100%;
     background-size: auto;
+    overflow: hidden;
     background-color: #ccc; /* Just for visualization */
 }
 
@@ -36,7 +41,11 @@ main {
     left: 0;
     width: 100%;
     height: 50%; /* Initial height of the water */
-    background: linear-gradient(to bottom, #00f, #00a); /* Gradient for water */
+    background: 
+        linear-gradient(to bottom, rgba(0, 0, 255, 0.9), rgba(0, 0, 170, 0.5)), /* Main gradient */
+        linear-gradient(to bottom, rgb(23, 100, 147), rgba(255, 255, 255, 0)), /* Light reflection */
+        url('images/water-texture.png'); /* Water texture */
+    background-size: cover, cover, cover; /* Ensure all layers cover the element */
     z-index: 1; /* Ensure water is behind the content */
     transition: height 2s ease-in-out; /* Smooth transition for height changes */
 }
@@ -48,6 +57,7 @@ main {
     transform: translateX(-50%);
     font-size: 2rem;
     z-index: 3; /* Ensure crab is above the water and content */
+    user-select: none;
     transition: transform 0.5s ease; /* Smooth transition for movement */
 }
 
@@ -58,5 +68,25 @@ main {
     font-size: 2rem;
     z-index: 2; /* Ensure fish is above the water but below the crab */
     transition: transform 5s linear; /* Smooth transition for swimming */
+    display: none; /* Initially hidden */
+    user-select: none;
+}
+
+#emoji {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 2; /* Ensure emoji is above the water and content */
+    display: none; /* Initially hidden */
+    user-select: none;
+}
+
+#counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: white;
+    font-family: sans-serif;
+    z-index: 5; /* Ensure counter is above everything else */
     display: none; /* Initially hidden */
 }
