@@ -2,7 +2,7 @@ let isDragging = false;
 let crabPosition = { x: 0, y: 0 };
 let crabVelocity = { x: 0, y: 0 }; // Add velocity to the crab
 let targetPosition = { x: 0, y: 0 };
-let crabSpeed = 5; // Pixels per frame, adjust this to change the crab's speed
+let crabSpeed = 6; // Pixels per frame, adjust this to change the crab's speed
 const emojis = ['🐚', '🌟', '💖', '💍', '💎', '🧿', '👑', '🗝️', '💠']; // List of emojis with frequencies
 const fishEmojis = ['🐟', '🐠', '🐡', '🦐', '🐙', '🏄‍♀️', '🏄‍♂️',]; // List of fish emojis
 let currentEmoji = null;
@@ -21,7 +21,7 @@ function adjustLayout() {
     container.style.height = `${windowHeight}px`;
 
     // Adjust font sizes
-    const baseFontSize = windowHeight * 0.02; // 2% of window height
+    const baseFontSize = windowHeight * 0.03; // 2% of window height
     document.documentElement.style.fontSize = `${baseFontSize}px`;
 
     // Update crab position after layout adjustment
@@ -206,7 +206,7 @@ function placeRandomEmoji() {
     do {
         randomX = Math.random() * (containerWidth - 50);
         randomY = containerHeight / 2 + Math.random() * (containerHeight / 2 - 50);
-    } while (Math.abs(randomX - crabPosition.x) < 50 && Math.abs(randomY - crabPosition.y) < 50);
+    } while (Math.abs(randomX - crabPosition.x) < 100 && Math.abs(randomY - crabPosition.y) < 100);
 
     emojiElement.style.left = `${randomX}px`;
     emojiElement.style.top = `${randomY}px`;
@@ -220,7 +220,7 @@ function checkCollision() {
     const emojiRect = emojiElement.getBoundingClientRect();
 
     // Define a margin for collision detection
-    const margin = 10; // Adjust this value to increase the overlap threshold
+    const margin = 20; // Adjust this value to increase the overlap threshold
 
     if (
         crabRect.left < emojiRect.right - margin &&
