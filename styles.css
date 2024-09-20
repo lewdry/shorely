@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light background color for the body */
+}
+
+main {
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Ensure content is above the water */
+}
+
+#container {
+    position: relative;
+    background: url('images/sandy-texture.jpg') repeat;
+    background-size: auto;
+    background-color: #ccc; /* Just for visualization */
+}
+
+#water {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Initial height of the water */
+    background: linear-gradient(to bottom, #00f, #00a); /* Gradient for water */
+    z-index: 1; /* Ensure water is behind the content */
+    transition: height 2s ease-in-out; /* Smooth transition for height changes */
+}
+
+#crab {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 3; /* Ensure crab is above the water and content */
+    transition: transform 0.5s ease; /* Smooth transition for movement */
+}
+
+#fish {
+    position: absolute;
+    top: 0;
+    right: 0px; /* Start off-screen */
+    font-size: 2rem;
+    z-index: 2; /* Ensure fish is above the water but below the crab */
+    transition: transform 5s linear; /* Smooth transition for swimming */
+    display: none; /* Initially hidden */
+}
