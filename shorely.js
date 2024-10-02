@@ -64,7 +64,7 @@ function animateWater() {
 
     // Initial water height
     randomTide();
-    setInterval(randomTide, 4000); // Change tide every 4 seconds
+    setInterval(randomTide, 3000); // Change tide every 4 seconds
 }
 
 function updateTargetPosition(event) {
@@ -211,6 +211,9 @@ function placeRandomEmoji() {
     emojiElement.style.left = `${randomX}px`;
     emojiElement.style.top = `${randomY}px`;
     emojiElement.style.display = 'block';
+
+    // Log new emoji position for debugging
+    console.log('New emoji position:', randomX, randomY);
 }
 
 function checkCollision() {
@@ -222,6 +225,15 @@ function checkCollision() {
     // Define a margin for collision detection
     const margin = 20; // Adjust this value to increase the overlap threshold
 
+    // Check if the emoji is currently visible
+    if (emojiElement.style.display === 'none') {
+        return; // Exit the function if the emoji is not visible
+    }
+
+    // Log positions for debugging
+    console.log('Crab position:', crabRect.left, crabRect.top);
+    console.log('Emoji position:', emojiRect.left, emojiRect.top);
+
     if (
         crabRect.left < emojiRect.right - margin &&
         crabRect.right > emojiRect.left + margin &&
@@ -229,6 +241,7 @@ function checkCollision() {
         crabRect.bottom > emojiRect.top + margin
     ) {
         // Collision detected
+        console.log('Collision detected!');
         emojiElement.style.display = 'none';
         placeRandomEmoji();
         updateCounter(); // Update the counter

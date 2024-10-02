@@ -59,6 +59,10 @@ main {
     z-index: 3; /* Ensure crab is above the water and content */
     user-select: none;
     transition: transform 0.5s ease; /* Smooth transition for movement */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
 }
 
 #fish {
@@ -70,6 +74,10 @@ main {
     transition: transform 5s linear; /* Smooth transition for swimming */
     display: none; /* Initially hidden */
     user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
 }
 
 #emoji {
@@ -78,6 +86,10 @@ main {
     z-index: 2; /* Ensure emoji is above the water and content */
     display: none; /* Initially hidden */
     user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
 }
 
 #counter {
