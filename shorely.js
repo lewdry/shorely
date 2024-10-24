@@ -21,7 +21,7 @@ function adjustLayout() {
     container.style.height = `${windowHeight}px`;
 
     // Adjust font sizes
-    const baseFontSize = windowHeight * 0.03; // 2% of window height
+    const baseFontSize = windowHeight * 0.03; // 3% of window height
     document.documentElement.style.fontSize = `${baseFontSize}px`;
 
     // Update crab position after layout adjustment
@@ -64,7 +64,7 @@ function animateWater() {
 
     // Initial water height
     randomTide();
-    setInterval(randomTide, 3000); // Change tide every 4 seconds
+    setInterval(randomTide, 3000); // Change tide every 3 seconds
 }
 
 function updateTargetPosition(event) {
@@ -206,7 +206,7 @@ function placeRandomEmoji() {
     do {
         randomX = Math.random() * (containerWidth - 50);
         randomY = containerHeight / 2 + Math.random() * (containerHeight / 2 - 50);
-    } while (Math.abs(randomX - crabPosition.x) < 100 && Math.abs(randomY - crabPosition.y) < 100);
+    } while (Math.abs(randomX - crabPosition.x) < 30 && Math.abs(randomY - crabPosition.y) < 30);
 
     emojiElement.style.left = `${randomX}px`;
     emojiElement.style.top = `${randomY}px`;
